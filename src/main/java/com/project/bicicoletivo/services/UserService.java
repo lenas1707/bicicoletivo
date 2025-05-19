@@ -12,7 +12,6 @@ import com.project.bicicoletivo.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -87,7 +86,7 @@ public class UserService implements UserDetailsService {
         bike.setMarca(dto.getMarcabike());
         bike.setModelo(dto.getModelobike());
         bike.setColor(dto.getCorbike());
-        bike.setProprietario(entity);
+        bike.setProprietary(entity);
 
         entity.getBikes().add(bike);
         entity = repository.save(entity);
@@ -115,7 +114,6 @@ public class UserService implements UserDetailsService {
         entity = repository.save(entity);
         return new UserDTO(entity);
     }
-
 
     private void copyDtoToEntity(CreateUserDTO dto, User entity){
         entity.setName(dto.getName());

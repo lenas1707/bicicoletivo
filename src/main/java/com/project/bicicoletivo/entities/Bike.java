@@ -25,7 +25,7 @@ public class Bike {
 
     @ManyToOne
     @JoinColumn(name = "proprietary_id")
-    private User proprietario;
+    private User proprietary;
 
     @OneToMany(mappedBy = "bike")
     private List<Registration> registros = new ArrayList<>();
@@ -33,11 +33,11 @@ public class Bike {
     public Bike() {
     }
 
-    public Bike(String marca, String modelo, String color, User proprietario) {
+    public Bike(String marca, String modelo, String color, User proprietary) {
         this.marca = marca;
         this.modelo = modelo;
         this.color = color;
-        this.proprietario = proprietario;
+        this.proprietary = proprietary;
     }
 
     public String getMarca() {
@@ -72,12 +72,12 @@ public class Bike {
         this.color = color;
     }
 
-    public User getProprietario() {
-        return proprietario;
+    public User getProprietary() {
+        return proprietary;
     }
 
-    public void setProprietario(User proprietario) {
-        this.proprietario = proprietario;
+    public void setProprietary(User proprietary) {
+        this.proprietary = proprietary;
     }
 
     @Override

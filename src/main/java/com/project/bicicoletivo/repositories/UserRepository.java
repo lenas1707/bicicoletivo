@@ -24,7 +24,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
     Optional<User> findByEmail(String email);
 
 
-	@Query("SELECT obj FROM Product obj " +
+	@Query("SELECT obj FROM User obj " +
 			"WHERE UPPER(obj.name) LIKE UPPER(CONCAT('%', :name, '%'))")
 	Page<User> searchByName(String name, Pageable pageable);
 }

@@ -10,24 +10,24 @@ public class BikeDTO {
     private String modelo;
     private String color;
 
-    private UserDTO proprietario;
+    private UserDTO proprietary;
 
     public BikeDTO() {
     }
 
-    public BikeDTO(Long id, String marca, String modelo, String color, UserDTO proprietario){
+    public BikeDTO(Long id, String marca, String modelo, String color, UserDTO proprietary){
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
         this.color = color;
-        this.proprietario = proprietario;
+        this.proprietary = proprietary;
     }
     public BikeDTO(Bike entity){
         this.id = entity.getId();
         this.marca = entity.getMarca();
         this.modelo = entity.getModelo();
         this.modelo = entity.getColor();
-        this.proprietario = new UserDTO(entity.getProprietario());
+        this.proprietary = new UserDTO(entity.getProprietary());
 
     }
 
@@ -47,7 +47,7 @@ public class BikeDTO {
         return color;
     }
 
-    public UserDTO getProprietario() {
-        return proprietario;
+    public UserDTO getProprietary() {
+        return proprietary;
     }
 }
