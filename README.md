@@ -29,6 +29,7 @@ Sistema de gerenciamento de bicicletas coletivas desenvolvido com Spring Boot.
 - Spring Security com OAuth2
 - Spring Data JPA
 - PostgreSQL
+- H2Database (contexto de testes)
 - Maven
 
 ## Estrutura do Projeto
