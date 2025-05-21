@@ -74,4 +74,4 @@ src/
 - 🚫 Prevenção contra ataques comuns
 
   ## 📚 Documentação
-  - 
+  -🧑🏻‍💻[Resumo Bicicoletivo](docs/bicicoletivo_resume.pdf)
