@@ -47,6 +47,7 @@ public class UserService implements UserDetailsService {
 
         return user;
     }
+
     protected User authenticated() {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -96,10 +97,10 @@ public class UserService implements UserDetailsService {
     @Transactional
     public UserDTO updateBike(Long ra, Long bikeId, CreateUserDTO dto){
         User authenticatedUser = authenticated();
-        if (authenticatedUser.getId() != ra) {
+        if (!authenticatedUser.getRa().equals(ra)) {
             throw new AccessDeniedException("Você não tem permissão para alterar esta bicicleta");
         }
-        User entity = repository.findById(ra).orElseThrow(
+        User entity = repository.findById(authenticatedUser.getId()).orElseThrow(
                 () -> new ResourceNotFoundException("Usuário não encontrado"));
 
         Bike bike = entity.getBikes().stream()

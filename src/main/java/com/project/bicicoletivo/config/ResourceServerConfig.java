@@ -44,7 +44,7 @@ public class ResourceServerConfig {
 	SecurityFilterChain rsSecurityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable());
 		http.authorizeHttpRequests(authorize -> authorize
-				.requestMatchers("/api/users").permitAll()
+				.requestMatchers("/api/users").permitAll()  // <-- Aqui está o problema
 				.anyRequest().authenticated()
 		);
 		http.oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer.jwt(Customizer.withDefaults()));

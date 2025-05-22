@@ -25,6 +25,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
 
 	@Query("SELECT obj FROM User obj " +
-			"WHERE UPPER(obj.name) LIKE UPPER(CONCAT('%', :name, '%'))")
+			"WHERE (:name IS NULL OR UPPER(obj.name) LIKE UPPER(CONCAT('%', :name, '%')))")
 	Page<User> searchByName(String name, Pageable pageable);
 }
