@@ -2,6 +2,8 @@ package com.project.bicicoletivo.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class CreateUserDTO {
 
@@ -12,19 +14,15 @@ public class CreateUserDTO {
     @Email(message = "Email inválido")
     private String email;
 
-    public Long getRa() {
-        return ra;
-    }
-
-    public void setRa(Long ra) {
-        this.ra = ra;
-    }
-
-    @NotBlank(message = "Número de matrícula é obrigatório")
+    @NotNull(message = "Número de matrícula é obrigatório")
     private Long ra;
 
     @NotBlank(message = "Marca da bicicleta é obrigatória")
     private String marcabike;
+
+    @NotBlank(message = "Senha é obrigatória")
+    @Size(min = 6, message = "A senha deve ter no mínimo 6 caracteres")
+    private String password;
 
     @NotBlank(message = "Modelo da bicicleta é obrigatório")
     private String modelobike;
@@ -71,7 +69,24 @@ public class CreateUserDTO {
         return corbike;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void setCorbike(String corbike) {
         this.corbike = corbike;
     }
+
+    public Long getRa() {
+        return ra;
+    }
+
+    public void setRa(Long ra) {
+        this.ra = ra;
+    }
+
 }

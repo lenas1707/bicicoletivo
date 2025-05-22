@@ -26,10 +26,10 @@ public class User implements UserDetails {
     private Long ra;
 
     @OneToMany(mappedBy = "proprietary", cascade = CascadeType.ALL)
-    private List<Bike> bikes;
+    private List<Bike> bikes = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Registration> registrations;
+    private List<Registration> registrations = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "tb_user_role",
@@ -38,6 +38,9 @@ public class User implements UserDetails {
     private Set<Role> roles = new HashSet<>();
 
     public User() {
+        this.bikes = new ArrayList<>();
+        this.registrations = new ArrayList<>();
+        this.roles = new HashSet<>();
     }
 
     public User(String name, String email, String password, Long ra) {
@@ -45,7 +48,11 @@ public class User implements UserDetails {
         this.email = email;
         this.password = password;
         this.ra = ra;
+        this.bikes = new ArrayList<>();
+        this.registrations = new ArrayList<>();
+        this.roles = new HashSet<>();
     }
+
 
     public Long getId() {
         return id;

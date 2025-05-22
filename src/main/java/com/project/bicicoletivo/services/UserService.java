@@ -17,6 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +29,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -47,15 +51,26 @@ public class UserService implements UserDetailsService {
 
         return user;
     }
+
     protected User authenticated() {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+            if (authentication == null || !authentication.isAuthenticated()) {
+                throw new UsernameNotFoundException("Usuário não autenticado");
+            }
+
             Jwt jwtPrincipal = (Jwt) authentication.getPrincipal();
             String username = jwtPrincipal.getClaim("username");
-            return repository.findByEmail(username).get();
+
+            return repository.findByEmail(username)
+                    .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
+        }
+        catch (ClassCastException e) {
+            throw new UsernameNotFoundException("Token inválido");
         }
         catch (Exception e) {
-            throw new UsernameNotFoundException("Invalid user");
+            throw new UsernameNotFoundException("Erro ao autenticar usuário: " + e.getMessage());
         }
     }
 

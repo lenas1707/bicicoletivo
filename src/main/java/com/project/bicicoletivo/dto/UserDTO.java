@@ -3,6 +3,7 @@ package com.project.bicicoletivo.dto;
 import com.project.bicicoletivo.entities.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 
 public class UserDTO {
@@ -15,7 +16,7 @@ public class UserDTO {
     @Email(message = "Email inválido")
     private String email;
 
-    @NotBlank(message = "O número de ra é obrigatório")
+    @NotNull(message = "O número de ra é obrigatório")
     private Long ra;
 
     public UserDTO(Long id, String name, String email, Long ra) {
