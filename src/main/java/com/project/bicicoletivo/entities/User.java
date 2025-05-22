@@ -51,8 +51,8 @@ public class User implements UserDetails {
         this.bikes = new ArrayList<>();
         this.registrations = new ArrayList<>();
         this.roles = new HashSet<>();
-    }
 
+    }
 
     public Long getId() {
         return id;

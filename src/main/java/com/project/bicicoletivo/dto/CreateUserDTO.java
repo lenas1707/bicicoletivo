@@ -20,7 +20,7 @@ public class CreateUserDTO {
     @NotBlank(message = "Marca da bicicleta é obrigatória")
     private String marcabike;
 
-    @NotBlank(message = "Senha é obrigatória")
+    //@NotBlank(message = "Senha é obrigatória")
     @Size(min = 6, message = "A senha deve ter no mínimo 6 caracteres")
     private String password;
 
