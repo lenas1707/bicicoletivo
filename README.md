@@ -2,7 +2,6 @@
 
 [![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.3-brightgreen.svg)](https://spring.io/projects/spring-boot)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue.svg)](https://www.postgresql.org/)
 [![Maven](https://img.shields.io/badge/Maven-3.9+-red.svg)](https://maven.apache.org/)
 
 Sistema de gerenciamento de bicicletas coletivas desenvolvido com Spring Boot, oferecendo uma solução completa para controle e monitoramento de bicicletas compartilhadas.
@@ -39,13 +38,14 @@ Sistema de gerenciamento de bicicletas coletivas desenvolvido com Spring Boot, o
 - 📊 Controle de status de registro (ativo/finalizado)
 - 🔄 Vinculação de registros a usuários e bicicletas
 - 📈 Histórico de utilização
+- Código de autorização
 
 ## 🛠 Tecnologias Utilizadas
 - **Backend**: Java 17
 - **Framework**: Spring Boot 3.2.3
 - **Segurança**: Spring Security com OAuth2
 - **Persistência**: Spring Data JPA
-- **Banco de Dados**: PostgreSQL 15
+- **Banco de Dados(desenvolvimento)**: H2
 - **Gerenciamento de Dependências**: Maven 3.9+
 
 ## 📁 Estrutura do Projeto
